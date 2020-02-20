@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Anagram Generator">
+        <meta name="keywords" content="Anagram, Anagrams, Anagrama, Generator, Generators, Gerador, HTML, CSS, JavaScript, Letters, Words, Github, Random, Letras, Palavras, Aleatório, Geradores, JS">
+        <meta name="author" content="William Santos">
+        <meta name="generator" content="Visual Studio Code">
+        
+        <!-- CSS -->
+        <link type="text/css" rel="stylesheet" href="css/anagram-generator.css">
+        <title> Anagram Generator </title>
+    </head>
+    <body>
+        <div class="content">
+            <h1> Anagram Generator </h1>
+
+            <!-- Input -->
+            <div class="word-placeholder">
+                <input type="text" id="word" class="word-input" maxlength="20" placeholder="Type two or more letters..." value="">
+                <button type="button" id="generator" class="btn-generator"> GENERATE </button>
+            </div>
+
+            <!-- Progress -->
+            <p id="progress" class="progress"> 
+                <span> Waiting for word (s)... </span>
+                <button id="stop" class="btn-stop"> Stop </button>
+            </p>
+
+            <!-- Output -->
+            <div id="output" class="output"> </div>
+            <p id="rejected" class="rejected"> </p>
+            <span class="link"> Made by <a href="https://github.com/williamdsw"> williamdsw </a> </span>
+
+            <!-- JS -->
+            <script type="text/javascript" src="js/anagram-generator.js"></script>
+        </div>
+    </body>
+</html>

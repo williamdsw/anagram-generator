@@ -1,0 +1,150 @@
+/* 
+    Created on : 20/02/2019 16:19:11
+    Author     : William Santos
+*/
+
+body { background-color: cornsilk; font-family: 'Courier New', Courier, monospace; }
+
+h1 { font-variant: small-caps; text-align: center; }
+
+.word-placeholder { width: fit-content;  margin: auto; }
+
+.word-input
+{
+    display: inline-block;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: medium;
+    font-style: italic;
+    border: none;
+    border-bottom: 2px dashed black;
+    text-align: center;
+    outline: none;
+}
+
+.word-input:focus
+{
+    border-bottom: 3px dashed black;
+    font-weight: bold;
+}
+
+.btn-generator
+{
+    display: inline-block;
+    width: 7em;
+    height: 3em;
+    padding: 1px;
+    font-family: inherit;
+    font-size: larger;
+    font-weight: bold;
+    background-color: inherit;
+    border: 1px solid black;
+    box-shadow: 1px 1px #0000007a;
+    cursor: pointer;
+}
+
+.btn-generator:hover { background-color: #f9e8a2; }
+.btn-generator:active { background-color: #fcc900; }
+
+
+.progress { margin: 2em; text-align: center; }
+
+
+.output
+{
+    width: auto;
+    height: 9em;
+    max-height: 9em;
+    max-width: 72em;
+    padding: 1em;
+    overflow: auto;
+    overflow-wrap: break-word;
+    background-color: #f9f2d5;
+    box-shadow: 3px 3px #a7a28b;
+    border: 1px solid black;
+}
+
+.result { display: inline-block; margin: 10px; padding: 5px; }
+.same { font-style: italic; color: darkviolet; }
+
+.btn-stop
+{
+    display: none;
+    font-family: inherit;
+    font-size: large;
+    font-weight: bold;
+    background-color: inherit;
+    color: red;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-stop:hover { color: #920000; }
+.btn-stop:active { color: #3c0606; }
+
+.rejected  { display: inline-block; margin: 2em 0;  color: red; }
+.link { float: right; margin: 2em 0;}
+
+/* tablet */
+@media only screen and (min-width:600px)
+{
+    .content { margin: 1em; }
+    .result { font-size: large; }
+}
+
+/* desktop */
+@media only screen and (min-width:768px)
+{
+    .content  { margin: 5em; }
+
+    h1 { text-shadow: 4px 1px #00000047; font-size: 4em; }
+
+    .word-input
+    {
+        width: 40em;
+        height: 1em;
+        padding: 1em;
+    }
+
+    .progress { font-size: large; }
+    .result { font-size: large; }
+}
+
+/* mobile / tablet */
+@media only screen and (max-width:978px)
+{
+    .content  { margin: 2em; }
+
+    h1 { text-shadow: 3px 1px #00000047; font-size: 3em; }
+
+    .progress { font-size: small; }
+    .result { font-size: inherit; }
+}
+
+/* mobile / tablet */
+@media only screen and (min-width:320px) and (max-width:768px)
+{
+    .btn-generator { display: block; margin: 1em auto; }
+}
+
+/* mobile */
+@media only screen and (max-width:425px)
+{
+    h1 { text-shadow: none; font-size: 2em; }
+
+    .word-input { font-size: small; }
+
+    .btn-generator
+    {
+        width: 6em;
+        height: 2em;
+        padding: 1px;
+        margin: 1em auto;
+        font-size: small;
+    }
+
+    .progress { margin: 1em; }
+    .btn-stop { font-size: inherit; }
+    .rejected {font-size: small; }
+    .result  { margin: 6px; padding: 3px; }
+}
