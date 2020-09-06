@@ -14,8 +14,8 @@ h1 {
 }
 
 .word-placeholder { 
-    width: fit-content;
     width: -moz-fit-content;
+    width: fit-content;
     margin: auto; 
 }
 
@@ -25,14 +25,14 @@ h1 {
     font-family: inherit;
     font-size: medium;
     font-style: italic;
-    border: none;
-    border-bottom: 2px dashed black;
+    border: 0;
+    border-bottom: 2px solid black;
     text-align: center;
     outline: none;
 }
 
 .word-input:focus {
-    border-bottom: 3px dashed black;
+    border-bottom: 3px solid black;
     font-weight: bold;
 }
 
@@ -72,8 +72,9 @@ h1 {
     overflow: auto;
     overflow-wrap: break-word;
     background-color: #f9f2d5;
-    box-shadow: 3px 3px #a7a28b;
+    box-shadow: 5px 5px 10px #a7a28b;
     border: 1px solid black;
+    margin: 0 auto;
 }
 
 .result { 
@@ -94,7 +95,7 @@ h1 {
     font-weight: bold;
     background-color: inherit;
     color: red;
-    border: none;
+    border: 0;
     cursor: pointer;
 }
 
@@ -108,70 +109,12 @@ h1 {
 
 .rejected  { 
     display: inline-block; 
-    margin: 2em 0;  
+    margin: 2em 3rem;  
     color: red; 
+    font-weight: bold;
 }
 
 .link { 
     float: right; 
-    margin: 2em 0;
-}
-
-/* tablet */
-@media only screen and (min-width:600px) {
-    .content { margin: 1em; }
-    .result { font-size: large; }
-}
-
-/* desktop */
-@media only screen and (min-width:768px) {
-    .content  { margin: 5em; }
-
-    h1 { text-shadow: 4px 1px #00000047; font-size: 4em; }
-
-    .word-input
-    {
-        width: 40em;
-        height: 1em;
-        padding: 1em;
-    }
-
-    .progress { font-size: large; }
-    .result { font-size: large; }
-}
-
-/* mobile / tablet */
-@media only screen and (max-width:978px) {
-    .content  { margin: 2em; }
-
-    h1 { text-shadow: 3px 1px #00000047; font-size: 3em; }
-
-    .progress { font-size: small; }
-    .result { font-size: inherit; }
-}
-
-/* mobile / tablet */
-@media only screen and (min-width:320px) and (max-width:768px) {
-    .btn-generator { display: block; margin: 1em auto; }
-}
-
-/* mobile */
-@media only screen and (max-width:425px) {
-    h1 { text-shadow: none; font-size: 2em; }
-
-    .word-input { font-size: small; }
-
-    .btn-generator
-    {
-        width: 6em;
-        height: 2em;
-        padding: 1px;
-        margin: 1em auto;
-        font-size: small;
-    }
-
-    .progress { margin: 1em; }
-    .btn-stop { font-size: inherit; }
-    .rejected {font-size: small; }
-    .result  { margin: 6px; padding: 3px; }
+    margin: 2rem 3rem;
 }

@@ -13,37 +13,37 @@ let numberOfRejected = 0;
 let intervalId = null;
 
 // Elements
-let btnGenerator = null;
+let buttonGenerator = null;
 let spanProgress = null;
-let btnStop = null;
+let buttonStop = null;
 let divOutput = null;
 let pRejected = null;
 let inputWord = null;
 
 // HELPER FUNCTIONS
 
-window.addEventListener ('load', function () {
+window.addEventListener ('DOMContentLoaded', () => {
     spanProgress = document.querySelector ('#pProgress span');
-    btnStop = document.getElementById ('buttonStop');
-    divOutput = document.getElementById ('divOutput');
-    pRejected = document.getElementById ('pRejected');
-    inputWord = document.getElementById ('inputWord');
-    btnGenerator = document.getElementById ('btnGenerator');
+    buttonStop = document.querySelector ('#buttonStop');
+    divOutput = document.querySelector ('#divOutput');
+    pRejected = document.querySelector ('#pRejected');
+    inputWord = document.querySelector ('#inputWord');
+    buttonGenerator = document.querySelector ('#buttonGenerator');
 
     // EVENTS
 
     inputWord.addEventListener ('keyup', function () {
         spanProgress.textContent = (this.value.length > 1 ? `Click on 'GENERATE'` : 'Two or more letters (words)');
         divOutput.innerHTML = '';
-        btnStop.style.display = 'none';
-        btnGenerator.disabled = false;
+        buttonStop.style.display = 'none';
+        buttonGenerator.disabled = false;
 
         if (typeof (intervalId) === 'number') {
             clearInterval (intervalId); 
         }
     });
 
-    btnGenerator.addEventListener ('click', function () {
+    buttonGenerator.addEventListener ('click', function () {
         if (inputWord.value.length > 1) {
             generateAnagrams (inputWord.value);
             this.disabled = true;
@@ -51,13 +51,13 @@ window.addEventListener ('load', function () {
         }
     });
 
-    btnStop.addEventListener ('click', function () {
+    buttonStop.addEventListener ('click', function () {
         if (typeof (intervalId) === 'number') {
             clearInterval (intervalId);
             this.style = 'none';
             numberOfRejected = 0;
             anagrams = [];
-            btnGenerator.disabled = false;
+            buttonGenerator.disabled = false;
         }
     });
 });
@@ -79,22 +79,22 @@ function generateMaxOcorrences (word) {
 
     word = word.normalize ('NFD');
     word = word.replace (/[\u0300-\u036f]/g, '');
-    const LETTERS = word.split ('');
+    const letters = word.split ('');
     let repeated = {};
 
     // Passing letters to object
-    LETTERS.map ((char) => {
+    letters.map ((char) => {
         if (char !== '') {
-            let ocorrence = LETTERS.filter ((c) => c === char).length;
+            let ocorrence = letters.filter ((c) => c === char).length;
             repeated[char] = ocorrence;
         }
     });
 
     // Calculates
     if (Object.keys (repeated).length > 1) {
-        const VALUES = Object.values (repeated);
+        const values = Object.values (repeated);
         let totalRepeated = 1;
-        VALUES.map ((item, index) => totalRepeated *= factorial (item));
+        values.map ((item) => totalRepeated *= factorial (item));
         maxOcorrences = (factorial (word.length) / totalRepeated);
     }
     
@@ -104,33 +104,33 @@ function generateMaxOcorrences (word) {
 // Generates anagrams based on the word passed
 function generateAnagrams (word) {
     anagrams = [];
-    const START = Date.now ();
+    const start = Date.now ();
 
     // Initial parameters
-    const LETTERS = word.split ('');
-    const MAX_OCORRENCES = generateMaxOcorrences (word);
+    const letters = word.split ('');
+    const maxOcorrences = generateMaxOcorrences (word);
     let arrInt = [];
 
     // Fills the array of integers
-    LETTERS.map ((item, index) => arrInt.push (index));
+    letters.map ((item, index) => arrInt.push (index));
 
     // Shows the sop button
-    btnStop.style.display = 'inline-block';
+    buttonStop.style.display = 'inline-block';
 
     let index = 0;
-    intervalId = setInterval (function () {
+    intervalId = setInterval (() => {
         let newWord = [];
         let newIntegers = [];
 
-        for (let j = 0; j < LETTERS.length; j++) {
-            if (newWord.length === LETTERS.length) {
+        for (let j = 0; j < letters.length; j++) {
+            if (newWord.length === letters.length) {
                 break; 
             }
 
             // Generates random index e get value / integer from arrays
-            const RANDOM_INDEX = Math.ceil (Math.random () * LETTERS.length) - 1;
-            let letter = LETTERS[RANDOM_INDEX];
-            let integer = arrInt[RANDOM_INDEX];
+            const randomIndex = Math.ceil (Math.random () * letters.length) - 1;
+            let letter = letters[randomIndex];
+            let integer = arrInt[randomIndex];
 
             if (newIntegers.indexOf (integer) === -1) {
                 newIntegers.push (integer);
@@ -147,7 +147,7 @@ function generateAnagrams (word) {
         if (anagrams.indexOf (newWord) == -1) {
             anagrams.push (newWord);
             renderElement (word, newWord, divOutput);
-            spanProgress.innerHTML = `Generated <b> ${anagrams.length} </b> of possible ${MAX_OCORRENCES} anagrams...`;
+            spanProgress.innerHTML = `Generated <b> ${anagrams.length} </b> of possible ${maxOcorrences} anagrams...`;
             index++;
         }
         else {
@@ -157,18 +157,18 @@ function generateAnagrams (word) {
         }
         
         // Breaks
-        if (anagrams.length === MAX_OCORRENCES) {
-            index = MAX_OCORRENCES; 
+        if (anagrams.length === maxOcorrences) {
+            index = maxOcorrences; 
         }
 
-        if (index === MAX_OCORRENCES) {
+        if (index === maxOcorrences) {
             clearInterval (intervalId);
-            btnStop.style.display = 'none';
-            const FINISHED = Date.now ();
-            spanProgress.innerHTML = `Generated ${anagrams.length} anagram${anagrams.length > 1 ? "s" : ""} in <b> ${FINISHED - START} ms </b>!`;
+            buttonStop.style.display = 'none';
+            const end = Date.now ();
+            spanProgress.innerHTML = `Generated ${anagrams.length} anagram${anagrams.length > 1 ? "s" : ""} in <b> ${end - start} ms </b>!`;
             numberOfRejected = 0;
             anagrams = [];
-            btnGenerator.disabled = false;
+            buttonGenerator.disabled = false;
         }
     });
 }

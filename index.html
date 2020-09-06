@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Meta -->
+        <!-- meta -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,33 +10,43 @@
         <meta name="author" content="William Santos">
         <meta name="generator" content="Visual Studio Code">
         
-        <!-- CSS -->
-        <link type="text/css" rel="stylesheet" href="css/anagram-generator.css">
+        <!-- css -->
+        <link type="text/css" rel="stylesheet" href="css/global.css">
+        <link type="text/css" rel="stylesheet" href="css/responsive.css">
+
         <title> Anagram Generator </title>
     </head>
     <body>
-        <div class="content">
+
+        <header>
             <h1> Anagram Generator </h1>
+        </header>
 
-            <!-- Input -->
-            <div class="word-placeholder">
-                <input type="text" id="inputWord" class="word-input" maxlength="20" placeholder="Type two or more letters..." value="">
-                <button type="button" id="btnGenerator" class="btn-generator"> GENERATE </button>
-            </div>
+        <main>
+            <article>
+                <div class="content">
 
-            <!-- Progress -->
-            <p id="pProgress" class="progress"> 
-                <span> Waiting for word (s)... </span>
-                <button id="buttonStop" class="btn-stop"> Stop </button>
-            </p>
+                    <!-- Input -->
+                    <div class="word-placeholder">
+                        <input type="text" id="inputWord" class="word-input" maxlength="20" placeholder="Type two or more letters..." value="">
+                        <button type="button" id="buttonGenerator" class="btn-generator"> GENERATE </button>
+                    </div>
+        
+                    <!-- Progress -->
+                    <p id="pProgress" class="progress"> 
+                        <span> Waiting for word (s)... </span>
+                        <button id="buttonStop" class="btn-stop"> Stop </button>
+                    </p>
+        
+                    <!-- Output -->
+                    <div id="divOutput" class="output"></div>
+                    <p id="pRejected" class="rejected"></p>
+                    <span class="link"> Made by <a href="https://github.com/williamdsw"> William Santos </a> </span>        
+                </div>
+            </article>
+        </main>
 
-            <!-- Output -->
-            <div id="divOutput" class="output"> </div>
-            <p id="pRejected" class="rejected"> </p>
-            <span class="link"> Made by <a href="https://github.com/williamdsw"> williamdsw </a> </span>
-
-            <!-- JS -->
-            <script type="text/javascript" src="js/anagram-generator.js"></script>
-        </div>
+        <!-- js -->
+        <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
